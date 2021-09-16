@@ -119,13 +119,14 @@ import PLIView from "./components/project_management/punchlist/view.component";
 
 import ResourceManagementHome from "./components/resource_management/resource-manage-home.component";
 import Timesheet from "./components/resource_management/Timesheet/Timesheet.component";
+import Customize from "./components/resource_management/Timesheet/customize.component";
 import Crew from "./components/resource_management/Crew/crew.component";
 import NewCrew from "./components/resource_management/Crew/new-crew.component";
 import Schedule from "./components/resource_management/Schedule/schedule.component";
 import Equipments from "./components/resource_management/Equipment/equipment.component";
 import EquipDetails from "./components/resource_management/Equipment/equipmentDetails.component";
 import ViewTimesheet from "./components/resource_management/Timesheet/view-timesheet.component";
-import AddWorkers from "./components/resource_management/Timesheet/add-workers.component";
+import ViewWorkers from "./components/resource_management/Timesheet/view-workers.component";
 import AddWorker from "./components/resource_management/Crew/add-worker.component";
 
 import FinancialManagementHome from "./components/financial_management/financial-manage-home.component";
@@ -191,9 +192,9 @@ class App extends Component {
           <Link to={"/home"} className="navbar-brand">
             <img
               src={mainIcon}
-              style={{ 'width': "50px", height: "50px" }}
+              style={{'width' : "50px", height: "50px"}}
               alt="profile-img"
-              className="mr-1"
+              className = "mr-1"
             /> Edifice
           </Link>
 
@@ -206,39 +207,33 @@ class App extends Component {
             {/* {currentUser && (
               <li className="nav-item">
                 <Link to={"/projectmanagement"} className="nav-link">
-                  <h6>Manage Projects</h6>
+                <h6>Manage Projects</h6>
                 </Link>
               </li>
             )}
             {showModeratorBoard && (
               <li className="nav-item">
                 <Link to={"/financialmanagement"} className="nav-link">
-                  <h6>Manage Finance</h6>
+                <h6>Manage Finance</h6>
                 </Link>
               </li>
             )}
             {showModeratorBoard && (
-              <li className="nav-item">
+            <li className="nav-item">
                 <Link to={"/resource"} className="nav-link">
                   <h6>Manage Resources</h6>
                 </Link>
-
-                { /*    <NavDropdown title="Manage Resources" id="basic-nav-dropdown">
-                <NavDropdown.Item href="/timesheet">Timesheets</NavDropdown.Item>
-                <NavDropdown.Item href="/equipments">Equipments</NavDropdown.Item>
-                <NavDropdown.Item href="/crew">Crews</NavDropdown.Item>
-              </NavDropdown>*/}
-              </li>
-            )}
+            </li>
+            )} */}
             {showAdminBoard && (
               <li className="nav-item">
                 <Link to={"/admin"} className="nav-link">
-                  <h6>Core Tools</h6>
+                <h6>Dashboard</h6>
                 </Link>
               </li>
             )}
           </div>
-
+         
           {currentUser ? (
             <div className="navbar-nav ml-auto">
               <li className="nav-item">
@@ -264,32 +259,23 @@ class App extends Component {
               </li>
             </div>
           ) : (
-            
-              <div className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  <Link to={"/login"} className="nav-link">
-                    Login
+            <div className="navbar-nav ml-auto">
+              <li className="nav-item">
+                <Link to={"/login"} className="nav-link">
+                  <h6>Login</h6>
                 </Link>
-                </li>
-
-                {/* <li className="nav-item">
-                <Link to={"/register"} className="nav-link">
-                  Sign Up
-                </Link>
-              </li> */}
-              </div>
-            )}
-
+              </li>
+            </div>
+          )}
         </nav>
         {!currentUser && (
           <Switch>
             <Route exact path={["/", "/home"]} component={Home} />
             <Route exact path="/login" component={Login} />
-            <Route component={ErrorPage} />
-          </Switch>
+            <Route component={ErrorPage}/>
+          </Switch>  
         )}
         {currentUser && (
-
         <div className="container mt-3">
           <Switch>
             <Route exact path={["/", "/home"]} component={Home} />

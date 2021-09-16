@@ -5,7 +5,7 @@ import ScheduleDataService from "./../../../services/schedule.service";
 import AuthService from "./../../../services/auth.service";
 
 import Paper from '@material-ui/core/Paper';
-import { ViewState, EditingState, IntegratedEditing } from '@devexpress/dx-react-scheduler';
+import { ViewState ,EditingState, IntegratedEditing} from '@devexpress/dx-react-scheduler';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -89,24 +89,24 @@ const day = new Date();
 const Appointment = ({
   children, style, ...restProps
 }) => (
-    <Appointments.Appointment
-      {...restProps}
-      style={{
-        ...style,
-        backgroundColor: '#273f7d',
-        borderRadius: '8px',
-      }}
-    >
-      {children}
-    </Appointments.Appointment>
-  );
+  <Appointments.Appointment
+    {...restProps}
+    style={{
+      ...style,
+      backgroundColor: '#273f7d',
+      borderRadius: '8px',
+    }}
+  >
+    {children}
+  </Appointments.Appointment>
+);
 
 export default class Schedule extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],
-      data1: [],
+      data: [] ,
+      data1:[],
       currentDate: day,
       userId: AuthService.getCurrentUser().id,
 
@@ -128,18 +128,18 @@ export default class Schedule extends React.PureComponent {
     this.retrieveAppointments(user);
   }
 
-  retrieveAppointments(id) {
+  retrieveAppointments(id){
     ScheduleDataService.getAll(id)
-      .then(response => {
+    .then(response => {
         this.setState({
           data: response.data
         });
         console.log(response.data);
-      })
+        })
       .catch(e => {
         console.log(e);
-      });
-  }
+});
+}
 
   changeAddedAppointment(addedAppointment) {
     this.setState({ addedAppointment });
@@ -158,18 +158,18 @@ export default class Schedule extends React.PureComponent {
       let { data } = state;
       //add task to schedule 
       if (added) {
-        //  const startingAddedId = data.length > 0 ? data[data.length - 1].id + 1 : 0;
-        //  data = [...data, { id: startingAddedId, ...added }];
-
-        //console.log(added.title)
+      //  const startingAddedId = data.length > 0 ? data[data.length - 1].id + 1 : 0;
+      //  data = [...data, { id: startingAddedId, ...added }];
+        
+      //console.log(added.title)
 
         var dataSend = {
           title: added.title,
           startDate: added.startDate,
           endDate: added.endDate,
-          userId: AuthService.getCurrentUser().id,
+          userId:AuthService.getCurrentUser().id,
         };
-
+    
         ScheduleDataService.create(dataSend)
           .then(response => {
             this.setState({
@@ -184,14 +184,14 @@ export default class Schedule extends React.PureComponent {
           .catch(e => {
             console.log(e);
           });
-        window.location.reload();
+          window.location.reload();
       }
 
       //update a schedule 
       if (changed) {
         data = data.map(appointment => (
           changed[appointment.id] ? { ...appointment, ...changed[appointment.id] } : appointment));
-        console.log(changed)
+          console.log(changed)
 
       }
       //delete a schedule 
@@ -199,14 +199,14 @@ export default class Schedule extends React.PureComponent {
         data = data.filter(appointment => appointment.id !== deleted);
 
         ScheduleDataService.delete(deleted)
-          .then(response => {
-            console.log(response.data);
-            window.location.reload();
-            // this.props.history.push('/drawings/'+this.state.pid);
-          })
-          .catch(e => {
-            console.log(e);
-          });
+        .then(response => {
+          console.log(response.data);
+          //window.location.reload();
+         // this.props.history.push('/drawings/'+this.state.pid);
+        })
+        .catch(e => {
+          console.log(e);
+        });
 
         console.log("schedule deleted")
       }
@@ -218,75 +218,75 @@ export default class Schedule extends React.PureComponent {
 
 
   render() {
-    const { currentDate, data, addedAppointment, appointmentChanges, editingAppointment, } = this.state;
+    const { currentDate,data,addedAppointment, appointmentChanges, editingAppointment, } = this.state;
 
     return (
 
-      <div>
-        <Card
-          bg={'success'}
-          text={'white'}
-          //style={{ width: '14rem' }}
-          className="mb-2">
+  <div>
+    <Card
+      bg={'success'}
+      text={'white'}
+      //style={{ width: '14rem' }}
+      className="mb-2">
+                
+      <Card.Body>
+        <Card.Title><h4>Schedule</h4></Card.Title>
+      </Card.Body>
+    </Card> 
+  <Paper>
+    <Scheduler
+      data={data}
+    >
+      <ViewState
+        currentDate={currentDate}
+        onCurrentDateChange={this.currentDateChange}
+        defaultCurrentViewName="Day"
+      />
 
-          <Card.Body>
-            <Card.Title><h4>Schedule</h4></Card.Title>
-          </Card.Body>
-        </Card>
-        <Paper>
-          <Scheduler
-            data={data}
-          >
-            <ViewState
-              currentDate={currentDate}
-              onCurrentDateChange={this.currentDateChange}
-              defaultCurrentViewName="Day"
-            />
+      <EditingState
+        onCommitChanges={this.commitChanges}
+        addedAppointment={addedAppointment}
+            onAddedAppointmentChange={this.changeAddedAppointment}
+            appointmentChanges={appointmentChanges}
+            onAppointmentChangesChange={this.changeAppointmentChanges}
+            editingAppointment={editingAppointment}
+            onEditingAppointmentChange={this.changeEditingAppointment}
+      />
+      <IntegratedEditing />
 
-            <EditingState
-              onCommitChanges={this.commitChanges}
-              addedAppointment={addedAppointment}
-              onAddedAppointmentChange={this.changeAddedAppointment}
-              appointmentChanges={appointmentChanges}
-              onAppointmentChangesChange={this.changeAppointmentChanges}
-              editingAppointment={editingAppointment}
-              onEditingAppointmentChange={this.changeEditingAppointment}
-            />
-            <IntegratedEditing />
+      <DayView
+          startDayHour={0}
+          endDayHour={24}
+      />
 
-            <DayView
-              startDayHour={0}
-              endDayHour={24}
-            />
+      <WeekView
+        startDayHour={0}
+        endDayHour={24}
+        timeTableCellComponent={TimeTableCell}
+        dayScaleCellComponent={DayScaleCell}
+      />
 
-            <WeekView
-              startDayHour={0}
-              endDayHour={24}
-              timeTableCellComponent={TimeTableCell}
-              dayScaleCellComponent={DayScaleCell}
-            />
-
-            <MonthView />
-
-            <Toolbar />
-            <DateNavigator />
-            <TodayButton />
-            <ViewSwitcher />
-            <AllDayPanel />
-            <EditRecurrenceMenu />
-            <ConfirmationDialog />
-            <Appointments
-              appointmentComponent={Appointment}
-            />
-            <AppointmentTooltip
-              showCloseButton
-              showOpenButton
-              showDeleteButton
-            />
-            <AppointmentForm />
-          </Scheduler>
-        </Paper>
-      </div>
-    );
+      <MonthView />
+        
+      <Toolbar />
+      <DateNavigator />
+      <TodayButton />
+      <ViewSwitcher />
+      <AllDayPanel />
+      <EditRecurrenceMenu />
+      <ConfirmationDialog />
+      <Appointments 
+        appointmentComponent={Appointment}
+      />
+      <AppointmentTooltip
+        showCloseButton
+        showOpenButton 
+        showDeleteButton
+      />
+      <AppointmentForm/>     
+    </Scheduler>
+  </Paper>
+  </div>
+  );
   }
 }
