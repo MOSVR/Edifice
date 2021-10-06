@@ -17,7 +17,7 @@ and high performance for an affordable price in the digital landscape
 # Sample View
 
 <p align="center">
-  <img width="400" height="400" src="https://github.com/MOSVR/Edifice/blob/main/edifice_dash.png">
+  <img width="1000" height="500" src="https://github.com/MOSVR/Edifice/blob/main/edifice_dash.png">
 </p>
 
 # Member Details
