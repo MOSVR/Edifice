@@ -4,7 +4,7 @@ out. And also, to replace the current procedure with modern technology to achiev
 and high performance for an affordable price in the digital landscape
 
 <p align="center">
-  <img width="400" height="400" src="https://github.com/MOSVR/Edifice/blob/main/edifice_logo.png">
+  <img width="400" height="400" src="https://github.com/MOSVR/Edifice/blob/main/Bordered_Edifice.png">
 </p>
 
 # Main Components
