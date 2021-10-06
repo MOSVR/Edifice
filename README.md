@@ -4,23 +4,23 @@ out. And also, to replace the current procedure with modern technology to achiev
 and high performance for an affordable price in the digital landscape
 
 <p align="center">
-  <img width="300" height="300" src="https://github.com/MOSVR/Edifice/blob/main/Bordered_Edifice.png">
+  <img width="250" height="250" src="https://github.com/MOSVR/Edifice/blob/main/Bordered_Edifice.png">
 </p>
 
-# Main Components
+## Main Components
 
 * Core Tools
 * Project Management
 * Financial Management
 * Resource Management
 
-# Sample View
+## Sample View
 
 <p align="center">
-  <img width="1000" height="500" src="https://github.com/MOSVR/Edifice/blob/main/edifice_dash.png">
+  <img width="1000" height="450" src="https://github.com/MOSVR/Edifice/blob/main/edifice_dash.png">
 </p>
 
-# Member Details
+## Member Details
 
 * D.M.T.S. Dissanayaka 2018/CS/043 18000436 
 * M.T. Fernando 2018/CS/052 18000525
