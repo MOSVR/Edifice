@@ -22,8 +22,8 @@ and high performance for an affordable price in the digital landscape
 
 # Member Details
 
-D.M.T.S. Dissanayaka 2018/CS/043 18000436 
-M.T. Fernando 2018/CS/052 18000525
-P. D. R.Thathsaranie 2018/CS/170 18001701 
-U.W.T.O.Weerasinghe 2018/CS/191 18001912
-S.A.V.S.Piyathilake 2018/IS/058 18020585
+* D.M.T.S. Dissanayaka 2018/CS/043 18000436 
+* M.T. Fernando 2018/CS/052 18000525
+* P. D. R.Thathsaranie 2018/CS/170 18001701 
+* U.W.T.O.Weerasinghe 2018/CS/191 18001912
+* S.A.V.S.Piyathilake 2018/IS/058 18020585
